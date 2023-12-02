@@ -8,8 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:call-card": "node dist/call-card/server/server.mjs",
-    "start:heroku": "node dist/server",
-    "postinstall": "npm run build"
+    "start:heroku": "npm run serve:ssr:call-card",
+    "postinstall": "ng build --prod"
   },
   "private": true,
   "dependencies": {
