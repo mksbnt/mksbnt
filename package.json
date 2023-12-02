@@ -1,15 +1,17 @@
 {
   "name": "call-card",
   "version": "0.0.1",
+  "engines": {
+    "node": "20.9.0"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
+    "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:call-card": "node dist/call-card/server/server.mjs",
-    "start:heroku": "npm run serve:ssr:call-card",
-    "postinstall": "npm run build"
+    "start:heroku": "npm run serve:ssr:call-card"
   },
   "private": true,
   "dependencies": {
