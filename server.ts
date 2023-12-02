@@ -8,7 +8,7 @@ import compression from 'compression';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
-  const server = express().use(compression);
+  const server = express();
   const serverDistFolder = dirname(fileURLToPath(import.meta.url));
   const browserDistFolder = resolve(serverDistFolder, '../browser');
   const indexHtml = join(serverDistFolder, 'index.server.html');
@@ -48,7 +48,7 @@ function run(): void {
   const port = process.env['PORT'] || 4000;
 
   // Start up the Node server
-  const server = app();
+  const server = app().use(compression());
   server.listen(port, () => {
     console.log(`Node Express server listening on http://localhost:${port}`);
   });
