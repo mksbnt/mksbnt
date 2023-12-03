@@ -1,5 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, Input, OnChanges, SimpleChanges } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { setColor } from "../../../utils/color.util";
 
 @Component({
   selector: "app-footer",
@@ -12,6 +13,7 @@ import { CommonModule } from "@angular/common";
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Github"
+        [style]="style"
       >
         <span>Github</span>
         <svg
@@ -32,6 +34,16 @@ import { CommonModule } from "@angular/common";
       </a>
     </footer>
   `,
-  styleUrl: './footer.component.less'
+  styleUrl: "./footer.component.less",
 })
-export class FooterComponent {}
+export class FooterComponent {
+  @Input({ required: true }) color!: string;
+
+  get currentColor(): string {
+    return setColor(this.color);
+  }
+
+  get style(): string {
+    return `background-color: ${this.currentColor}; box-shadow: 0px 0px 14px 0px ${this.currentColor};`;
+  }
+}
