@@ -1,0 +1,170 @@
+@import "../../../../../../assets/styles/core/variables.less";
+
+h1 {
+  padding: 24px;
+  font-size: 48px;
+  line-height: normal;
+  background-color: @color-black;
+  border-radius: 16px;
+  user-select: none;
+
+  .row {
+    display: flex;
+    transition: color 0.5s ease-in-out;
+
+    .focus {
+      transition: color 0.5s ease-in-out;
+    }
+  }
+
+  .typing {
+    transition: color 0.5s ease-in-out;
+
+    &::before {
+      content: "";
+      animation: text 13s step-end infinite;
+    }
+
+    @keyframes text {
+      0% {
+        content: "on Angular";
+      }
+      20% {
+        content: "on Angular";
+      }
+      23% {
+        content: "on Angula";
+      }
+      26% {
+        content: "on Angul";
+      }
+      28% {
+        content: "on Angu";
+      }
+      30% {
+        content: "on Ang";
+      }
+      32% {
+        content: "on An";
+      }
+      35% {
+        content: "on A";
+      }
+      37% {
+        content: "on ";
+      }
+      40% {
+        content: "on a";
+      }
+      42% {
+        content: "on ";
+      }
+      44% {
+        content: "on t";
+      }
+      50% {
+        content: "on th";
+      }
+      51% {
+        content: "on the";
+      }
+      52% {
+        content: "on the";
+      }
+      54% {
+        content: "on the ";
+      }
+      57% {
+        content: "on the r";
+      }
+      59% {
+        content: "on the re";
+      }
+      63% {
+        content: "on the res";
+      }
+      64% {
+        content: "on the resu";
+      }
+      65% {
+        content: "on the resul";
+      }
+      67% {
+        content: "on the result";
+      }
+      69% {
+        content: "on the result";
+      }
+      71% {
+        content: "on the result";
+      }
+      73% {
+        content: "on the resul";
+      }
+      75% {
+        content: "on the resu";
+      }
+      80% {
+        content: "on the res";
+      }
+      81% {
+        content: "on the re";
+      }
+      82% {
+        content: "on the r";
+      }
+      83% {
+        content: "on the";
+      }
+      85% {
+        content: "on th";
+      }
+      86% {
+        content: "on t";
+      }
+      87% {
+        content: "on ";
+      }
+      89% {
+        content: "on A";
+      }
+      91% {
+        content: "on An";
+      }
+      92% {
+        content: "on Ang";
+      }
+      93% {
+        content: "on Angu";
+      }
+      94% {
+        content: "on Angul";
+      }
+      95% {
+        content: "on Angula";
+      }
+    }
+
+    &::after {
+      content: "";
+      display: inline-block;
+      width: 0.1em;
+      height: 0.75em;
+      margin-left: 0.1em;
+      background-color: #fff;
+      animation: blink 0.75s ease-in-out;
+
+      @keyframes blink {
+        0%,
+        25%,
+        100% {
+          opacity: 1;
+        }
+        50%,
+        75% {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}

@@ -1,9 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ILinearGradient, IPath } from '../../interfaces/svg.interface';
-import { separateArray } from '../../utils/separate-array.util';
-import { SVG } from '../../constants/svg.constant';
-import { setColor } from '../../utils/color.util';
+import { ILinearGradient, IPath } from '../../../../interfaces/svg.interface';
+import { separateArray } from '../../../../utils/separate-array.util';
+import { SVG } from '../../../../constants/svg.constant';
 
 @Component({
   selector: 'app-svg',
@@ -153,7 +152,7 @@ import { setColor } from '../../utils/color.util';
           <stop
             class="stop-color-transition"
             [attr.offset]="s.offset"
-            [attr.stop-color]="currentColor"
+            [attr.stop-color]="color"
           />
           } }
         </linearGradient>
@@ -168,10 +167,6 @@ export class SvgComponent implements OnInit {
   largerHemisphere!: IPath[];
   smallerHemisphere!: IPath[];
   linearGradient!: ILinearGradient[];
-
-  get currentColor(): string {
-    return setColor(this.color);
-  }
 
   ngOnInit(): void {
     [this.largerHemisphere, this.smallerHemisphere] = separateArray(SVG.g.path);

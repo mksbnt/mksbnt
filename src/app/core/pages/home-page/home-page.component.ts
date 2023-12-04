@@ -2,36 +2,32 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  Input,
   inject,
 } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { SvgComponent } from "../../components/svg/svg.component";
-import { setColor } from "../../utils/color.util";
+import { SvgComponent } from "./components/svg/svg.component";
+import { transparentColor } from "../../constants/colors-palette.constant";
+import { TitleComponent } from "./components/title/title.component";
+import { SemispheresComponent } from "./components/semispheres/semispheres.component";
 
 @Component({
   selector: "app-home-page",
   standalone: true,
-  imports: [CommonModule, SvgComponent],
+  imports: [CommonModule, SvgComponent, TitleComponent, SemispheresComponent],
   template: `
-    <h1>
-      Software Engineer<br />
-      <div class="typing"></div>
-    </h1>
-
-    <div class="svg_wrapper">
-      <div class="svg_ellipse" [style.background-color]="currentColor"></div>
-      <app-svg [color]="currentColor" class="svg"></app-svg>
+    <div class="page">
+      <div class="page_title">
+        <app-title [color]="color"></app-title>
+      </div>
+      <div class="page_semispheres">
+        <app-semispheres [color]="color"></app-semispheres>
+      </div>
     </div>
   `,
   styleUrl: "./home-page.component.less",
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class HomePageComponent {
-  @Input({ required: true }) color!: string;
+  color: string = transparentColor;
   changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
-
-  get currentColor(): string {
-    return setColor(this.color);
-  }
 }
