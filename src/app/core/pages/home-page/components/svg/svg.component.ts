@@ -1,13 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ILinearGradient, IPath } from '../../../../interfaces/svg.interface';
-import { separateArray } from '../../../../utils/separate-array.util';
-import { SVG } from '../../../../constants/svg.constant';
+import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { ILinearGradient, IPath } from "../../../../interfaces/svg.interface";
+import { separateArray } from "../../../../utils/separate-array.util";
+import { SVG } from "../../../../constants/svg.constant";
+import { SecondsPostfixPipe } from "../../../../pipes/seconds-postfix.pipe";
 
 @Component({
-  selector: 'app-svg',
+  selector: "app-svg",
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SecondsPostfixPipe],
   template: `
     <svg
       class="svg"
@@ -26,18 +27,20 @@ import { SVG } from '../../../../constants/svg.constant';
           [attr.d]="p.d"
           [attr.opacity]="p.opacity"
         >
+          @if (isActive) {
           <animate
             attributeName="d"
-            dur="2s"
+            [attr.dur]="largerHemisphereAnimationDuration | secondsPostfix"
             repeatCount="indefinite"
             [attr.values]="getIncrementedValues(largerHemisphere, i)"
           />
           <animate
             attributeName="opacity"
-            dur="2s"
+            [attr.dur]="largerHemisphereAnimationDuration | secondsPostfix"
             repeatCount="indefinite"
             values="0;1"
           />
+          }
         </path>
         } @if (i > 0 && i < c - 3) {
         <path
@@ -47,12 +50,14 @@ import { SVG } from '../../../../constants/svg.constant';
           [attr.d]="p.d"
           [attr.opacity]="p.opacity"
         >
+          @if (isActive) {
           <animate
             attributeName="d"
-            dur="2s"
+            [attr.dur]="largerHemisphereAnimationDuration | secondsPostfix"
             repeatCount="indefinite"
             [attr.values]="getIncrementedValues(largerHemisphere, i)"
           />
+          }
         </path>
 
         } @if (i === c - 3) {
@@ -63,18 +68,20 @@ import { SVG } from '../../../../constants/svg.constant';
           [attr.d]="p.d"
           [attr.opacity]="p.opacity"
         >
+          @if (isActive) {
           <animate
             attributeName="d"
-            dur="2s"
+            [attr.dur]="largerHemisphereAnimationDuration | secondsPostfix"
             repeatCount="indefinite"
             [attr.values]="getDectementedValues(largerHemisphere, i)"
           />
           <animate
             attributeName="opacity"
-            dur="2s"
+            [attr.dur]="largerHemisphereAnimationDuration | secondsPostfix"
             repeatCount="indefinite"
             values="1;0"
           />
+          }
         </path>
         } } @for (psh of smallerHemisphere; track psh; let ipsh = $index, cpsh =
         $count) { @if (ipsh === 1) {
@@ -84,19 +91,21 @@ import { SVG } from '../../../../constants/svg.constant';
           [attr.d]="psh.d"
           [attr.opacity]="psh.opacity"
         >
+          @if (isActive) {
           <animate
             attributeName="d"
-            dur="1.5s"
+            [attr.dur]="smallerHemisphereAnimationDuration | secondsPostfix"
             repeatCount="indefinite"
             [attr.values]="getIncrementedValues(smallerHemisphere, ipsh)"
           />
 
           <animate
             attributeName="opacity"
-            dur="1.5s"
+            [attr.dur]="smallerHemisphereAnimationDuration | secondsPostfix"
             repeatCount="indefinite"
             values="1;0"
           />
+          }
         </path>
         } @if (ipsh > 1 && ipsh < cpsh - 2 ) {
         <path
@@ -105,12 +114,14 @@ import { SVG } from '../../../../constants/svg.constant';
           [attr.d]="psh.d"
           [attr.opacity]="psh.opacity"
         >
+          @if (isActive) {
           <animate
             attributeName="d"
-            dur="1.5s"
+            [attr.dur]="smallerHemisphereAnimationDuration | secondsPostfix"
             repeatCount="indefinite"
             [attr.values]="getDectementedValues(smallerHemisphere, ipsh)"
           />
+          }
         </path>
         } @if (ipsh === cpsh - 1) {
         <path
@@ -119,18 +130,20 @@ import { SVG } from '../../../../constants/svg.constant';
           [attr.d]="psh.d"
           [attr.opacity]="psh.opacity"
         >
+          @if (isActive) {
           <animate
             attributeName="d"
-            dur="1.5s"
+            [attr.dur]="smallerHemisphereAnimationDuration | secondsPostfix"
             repeatCount="indefinite"
             [attr.values]="getDectementedValues(smallerHemisphere, ipsh)"
           />
           <animate
             attributeName="opacity"
-            dur="1.5s"
+            [attr.dur]="smallerHemisphereAnimationDuration | secondsPostfix"
             repeatCount="indefinite"
             values="0;1"
           />
+          }
         </path>
         } }
       </g>
@@ -160,15 +173,20 @@ import { SVG } from '../../../../constants/svg.constant';
       </defs>
     </svg>
   `,
-  styleUrl: './svg.component.less',
+  styleUrl: "./svg.component.less",
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SvgComponent implements OnInit {
+export class SvgComponent {
   @Input({ required: true }) color!: string;
+  @Input({ required: true }) isActive!: boolean;
   largerHemisphere!: IPath[];
   smallerHemisphere!: IPath[];
   linearGradient!: ILinearGradient[];
+  largerHemisphereAnimationDuration: number = 2;
+  smallerHemisphereAnimationDuration: number =
+    this.largerHemisphereAnimationDuration * 0.75;
 
-  ngOnInit(): void {
+  constructor() {
     [this.largerHemisphere, this.smallerHemisphere] = separateArray(SVG.g.path);
     this.linearGradient = SVG.defs.linearGradient;
   }

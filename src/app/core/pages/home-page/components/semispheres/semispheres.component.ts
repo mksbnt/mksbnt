@@ -9,10 +9,11 @@ import { EllipseComponent } from "../ellipse/ellipse.component";
   imports: [CommonModule, SvgComponent, EllipseComponent],
   template: `
     <app-ellipse [color]="color"></app-ellipse>
-    <app-svg [color]="color"></app-svg>
+    <app-svg [isActive]="isActive" [color]="color"></app-svg>
   `,
   styleUrl: "./semispheres.component.less",
 })
 export class SemispheresComponent {
   @Input({ required: true }) color!: string;
+  @Input({ required: true }) isActive!: boolean;
 }

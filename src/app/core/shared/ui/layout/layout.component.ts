@@ -1,17 +1,10 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  DestroyRef,
-  NgZone,
-  inject,
-} from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { Component, inject } from "@angular/core";
+import { CommonModule, DOCUMENT } from "@angular/common";
 import { RouterOutlet } from "@angular/router";
 import { FooterComponent } from "../footer/footer.component";
-import { ColorService } from "../../../services/color.service";
-import { transparentColor } from "../../../constants/colors-palette.constant";
-import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import HomePageComponent from "../../../pages/home-page/home-page.component";
+import { DocumentService } from "../../../services/document.service";
+import { DOCUMENT_VISIBILITY } from "../../../enums/document-visibility.enum";
+
 
 @Component({
   selector: "app-layout",
@@ -19,31 +12,25 @@ import HomePageComponent from "../../../pages/home-page/home-page.component";
   imports: [CommonModule, RouterOutlet, FooterComponent],
   template: `
     <main>
-      <router-outlet (activate)="onOutletLoaded($event)"></router-outlet>
+      <router-outlet></router-outlet>
     </main>
-    <app-footer [color]="color"></app-footer>
+    <app-footer></app-footer>
   `,
   styleUrl: "./layout.component.less",
 })
 export default class LayoutComponent {
-  private destroyRef = inject(DestroyRef);
-  private ngZone: NgZone = inject(NgZone);
-  private colorService: ColorService = inject(ColorService);
-  private changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
-  color: string = transparentColor;
+  private readonly document: Document = inject(DOCUMENT);
+  private documentService: DocumentService = inject(DocumentService);
 
-  onOutletLoaded(component: HomePageComponent) {
-    this.ngZone.runOutsideAngular(() => {
-      this.colorService
-        .getColor()
-        .pipe(takeUntilDestroyed(this.destroyRef))
-        .subscribe((color) => {
-          this.color = color;
-          this.changeDetectorRef.detectChanges();
+  constructor() {
+    this.listenDocument(this.document);
+  }
 
-          component.color = this.color;
-          component.changeDetectorRef.detectChanges();
-        });
+  listenDocument(document: Document): void {
+    document.addEventListener("visibilitychange", () => {
+      document.visibilityState === DOCUMENT_VISIBILITY.HIDDEN
+        ? (this.documentService.visibility = false)
+        : (this.documentService.visibility = true);
     });
   }
 }

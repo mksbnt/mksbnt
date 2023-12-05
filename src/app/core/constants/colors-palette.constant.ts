@@ -1,4 +1,4 @@
-import { IColorsPalette } from "../interfaces/colors-paletee.interface";
+import { IColorsPalette } from "../interfaces/colors-palette.interface";
 
 export const transparentColor: string = "transparent";
 

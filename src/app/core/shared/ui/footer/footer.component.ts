@@ -1,6 +1,13 @@
-import { Component, Input, OnChanges, SimpleChanges } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  DestroyRef,
+  inject,
+} from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { setColor } from "../../../utils/color.util";
+import { ColorService } from "../../../services/color.service";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 
 @Component({
   selector: "app-footer",
@@ -35,12 +42,25 @@ import { setColor } from "../../../utils/color.util";
     </footer>
   `,
   styleUrl: "./footer.component.less",
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent {
-  @Input({ required: true }) color!: string;
+  private destroyRef = inject(DestroyRef);
+  private colorService: ColorService = inject(ColorService);
+  private changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
+  private color: string = this.colorService.getCurrentColor();
+
+  constructor() {
+    this.colorService.currentColorChanged
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((color) => {
+        this.color = color;
+        this.changeDetectorRef.detectChanges();
+      });
+  }
 
   get currentColor(): string {
-    return setColor(this.color);
+    return this.color;
   }
 
   get style(): string {

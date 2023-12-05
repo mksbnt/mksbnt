@@ -1,25 +1,38 @@
-import { Injectable } from "@angular/core";
-import { colorsPalette } from "../constants/colors-palette.constant";
+import { EventEmitter, Injectable } from "@angular/core";
+import {
+  colorsPalette,
+  transparentColor,
+} from "../constants/colors-palette.constant";
 import { Observable, timer, map } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
 export class ColorService {
-  colors: string[] = [
+  private colors: string[] = [
     colorsPalette.blue,
     colorsPalette.mulberry,
     colorsPalette.magenta,
   ];
-  currentColorIndex = 0;
-  currentColor: string = this.colors[this.currentColorIndex];
+  private colorIndex: number = 0;
+  private color: string = transparentColor;
+  currentColorChanged: EventEmitter<string> = new EventEmitter<string>();
 
-  getColor(): Observable<string> {
+  getCurrentColor(): string {
+    return this.color;
+  }
+
+  setCurrentColor(color: string): void {
+    this.color = color;
+    this.currentColorChanged.emit(this.color);
+  }
+
+  colorIterator(): Observable<string> {
     return timer(0, 3000).pipe(
       map(() => {
-        this.currentColorIndex =
-          (this.currentColorIndex + 1) % this.colors.length;
-        return this.colors[this.currentColorIndex];
+        this.colorIndex =
+          (this.colorIndex + 1) % this.colors.length;
+        return this.colors[this.colorIndex];
       })
     );
   }
