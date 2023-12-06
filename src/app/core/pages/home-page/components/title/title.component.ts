@@ -10,11 +10,14 @@ import {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <h1>
-      <div class="row" [style.color]="primaryColor">Software Engineer</div>
+    <h1 class="title">
+      <div class="row" [style.color]="primaryColor">
+        <span class="primary-text" >Software Engineer</span>
+      </div>
       <div class="row">
-        <span class="focus" [style.color]="color">Focused</span>&nbsp;
-        <div [style.color]="primaryColor" class="typing"></div>
+        <span class="focus secondary-text" [style.color]="secondaryColor">Focused</span>
+        <span class="space">&nbsp;</span>
+        <div class="primary-text typing" [style.color]="primaryColor"></div>
       </div>
     </h1>
   `,
@@ -22,9 +25,14 @@ import {
 })
 export class TitleComponent {
   @Input({ required: true }) color!: string;
+
   get primaryColor(): string {
     return this.color === transparentColor
       ? transparentColor
       : colorsPalette.white;
+  }
+
+  get secondaryColor(): string {
+    return this.color;
   }
 }

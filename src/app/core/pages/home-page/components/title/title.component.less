@@ -1,6 +1,6 @@
 @import "../../../../../../assets/styles/core/variables.less";
 
-h1 {
+.title {
   padding: 24px;
   font-size: 48px;
   line-height: normal;
@@ -29,117 +29,155 @@ h1 {
       0% {
         content: "on Angular";
       }
+
       20% {
         content: "on Angular";
       }
+
       23% {
         content: "on Angula";
       }
+
       26% {
         content: "on Angul";
       }
+
       28% {
         content: "on Angu";
       }
+
       30% {
         content: "on Ang";
       }
+
       32% {
         content: "on An";
       }
+
       35% {
         content: "on A";
       }
+
       37% {
         content: "on ";
       }
+
       40% {
         content: "on a";
       }
+
       42% {
         content: "on ";
       }
+
       44% {
         content: "on t";
       }
+
       50% {
         content: "on th";
       }
+
       51% {
         content: "on the";
       }
+
       52% {
         content: "on the";
       }
+
       54% {
         content: "on the ";
       }
+
       57% {
         content: "on the r";
       }
+
       59% {
         content: "on the re";
       }
+
       63% {
         content: "on the res";
       }
+
       64% {
         content: "on the resu";
       }
+
       65% {
         content: "on the resul";
       }
+
       67% {
         content: "on the result";
       }
+
       69% {
         content: "on the result";
       }
+
       71% {
         content: "on the result";
       }
+
       73% {
         content: "on the resul";
       }
+
       75% {
         content: "on the resu";
       }
+
       80% {
         content: "on the res";
       }
+
       81% {
         content: "on the re";
       }
+
       82% {
         content: "on the r";
       }
+
       83% {
         content: "on the";
       }
+
       85% {
         content: "on th";
       }
+
       86% {
         content: "on t";
       }
+
       87% {
         content: "on ";
       }
+
       89% {
         content: "on A";
       }
+
       91% {
         content: "on An";
       }
+
       92% {
         content: "on Ang";
       }
+
       93% {
         content: "on Angu";
       }
+
       94% {
         content: "on Angul";
       }
+
       95% {
         content: "on Angula";
       }
@@ -156,14 +194,43 @@ h1 {
 
       @keyframes blink {
         0%,
-        25%,
-        100% {
-          opacity: 1;
+        25% {
+          opacity: 0;
         }
+
+        // 0%,
+        // 25%,
+        // 100% {
+        //   opacity: 1;
+        // }
+
         50%,
         75% {
           opacity: 0;
         }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .title {
+    padding: 8px;
+    font-size: 42px;
+    border-radius: 8px;
+    min-width: 100%;
+
+    .row {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      .space {
+        display: none;
+      }
+
+      .primary-text {
+        font-size: 36px;
       }
     }
   }
