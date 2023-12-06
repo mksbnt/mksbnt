@@ -73,7 +73,7 @@ import { SecondsPostfixPipe } from "../../../../pipes/seconds-postfix.pipe";
             attributeName="d"
             [attr.dur]="largerHemisphereAnimationDuration | secondsPostfix"
             repeatCount="indefinite"
-            [attr.values]="getDectementedValues(largerHemisphere, i)"
+            [attr.values]="getDecrementedValues(largerHemisphere, i)"
           />
           <animate
             attributeName="opacity"
@@ -119,7 +119,7 @@ import { SecondsPostfixPipe } from "../../../../pipes/seconds-postfix.pipe";
             attributeName="d"
             [attr.dur]="smallerHemisphereAnimationDuration | secondsPostfix"
             repeatCount="indefinite"
-            [attr.values]="getDectementedValues(smallerHemisphere, ipsh)"
+            [attr.values]="getDecrementedValues(smallerHemisphere, ipsh)"
           />
           }
         </path>
@@ -135,7 +135,7 @@ import { SecondsPostfixPipe } from "../../../../pipes/seconds-postfix.pipe";
             attributeName="d"
             [attr.dur]="smallerHemisphereAnimationDuration | secondsPostfix"
             repeatCount="indefinite"
-            [attr.values]="getDectementedValues(smallerHemisphere, ipsh)"
+            [attr.values]="getDecrementedValues(smallerHemisphere, ipsh)"
           />
           <animate
             attributeName="opacity"
@@ -160,7 +160,10 @@ import { SecondsPostfixPipe } from "../../../../pipes/seconds-postfix.pipe";
         >
           @for (s of l.stop; track s; let first = $first) { @if (s.stopOpacity)
           {
-          <stop [attr.offset]="s.offset" [attr.stop-opacity]="s.stopOpacity" />
+          <stop
+            [attr.offset]="s.offset"
+            [attr.stop-opacity]="s.stopOpacity"
+          />
           } @if (s.stopColor) {
           <stop
             class="stop-color-transition"
@@ -195,7 +198,7 @@ export class SvgComponent {
     return `${arr[index].d}; ${arr[index + 2].d}`;
   }
 
-  getDectementedValues(arr: IPath[], index: number): string {
+  getDecrementedValues(arr: IPath[], index: number): string {
     return `${arr[index].d}; ${arr[index - 2].d}`;
   }
 }
