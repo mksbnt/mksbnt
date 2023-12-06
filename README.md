@@ -41,8 +41,6 @@
     </a> 
 </p>
 
-<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=mksbnt&show_icons=true&locale=en" alt="mksbnt" /></p>
-
-<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=mksbnt&" alt="mksbnt" /></p>
+<p align="center"><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=mksbnt&" alt="mksbnt" /></p>
 
 <!-- https://rahuldkjain.github.io/gh-profile-readme-generator/ -->
