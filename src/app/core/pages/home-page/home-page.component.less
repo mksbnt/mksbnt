@@ -5,9 +5,9 @@
   align-items: center;
 
   &_title {
-    margin-left: 24px;
     position: relative;
     top: -75px;
+    margin-left: 24px;
     z-index: 2;
   }
 
@@ -16,5 +16,19 @@
     right: -556px;
     bottom: -464px;
     transform: scale(1.5);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .page {
+    &_title {
+      margin-left: 0;
+    }
+
+    &_semispheres {
+      right: -820px;
+      bottom: -540px;
+      transform: scale(1);
+    }
   }
 }

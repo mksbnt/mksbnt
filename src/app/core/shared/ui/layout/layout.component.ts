@@ -4,23 +4,28 @@ import { RouterOutlet } from "@angular/router";
 import { FooterComponent } from "../footer/footer.component";
 import { DocumentService } from "../../../services/document.service";
 import { DOCUMENT_VISIBILITY } from "../../../enums/document-visibility.enum";
-
+import { BrowserService } from "../../../services/browser.service";
+import { BROWSER } from "../../../enums/browser.enum";
 
 @Component({
   selector: "app-layout",
   standalone: true,
   imports: [CommonModule, RouterOutlet, FooterComponent],
   template: `
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-    <app-footer></app-footer>
+    <div class="wrapper" [class]="browser">
+      <main class="main">
+        <router-outlet></router-outlet>
+      </main>
+      <app-footer></app-footer>
+    </div>
   `,
   styleUrl: "./layout.component.less",
 })
 export default class LayoutComponent {
   private readonly document: Document = inject(DOCUMENT);
   private documentService: DocumentService = inject(DocumentService);
+  private browserService: BrowserService = inject(BrowserService);
+  browser: BROWSER = this.browserService.detectBrowserName();
 
   constructor() {
     this.listenDocument(this.document);

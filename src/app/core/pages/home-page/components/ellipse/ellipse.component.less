@@ -1,39 +1,26 @@
 .ellipse {
-    position: absolute;
-    bottom: 31.94%;
-    right: 47.2%;
-    height: 36%;
-    width: 6%;
-    border-radius: 50%;
-    opacity: 0.5;
-    transform: rotate(28.5deg);
-    transition: all 3s ease-in-out;
-    filter: blur(75px);
-}
+  position: absolute;
+  bottom: 31.94%;
+  right: 45.2%;
+  height: 36%;
+  width: 10%;
+  border-radius: 50%;
+  opacity: 0.4;
 
-@keyframes blur {
-    0% {
-      right: 22%;
-      top: 34%;
-    }
-  
-    25% {
-      right: 23%;
-      top: 37%;
-    }
-  
-    50% {
-      right: 22%;
-      top: 34%;
-    }
-  
-    75% {
-      right: 19%;
-      top: 31%;
-    }
-  
-    100% {
-      right: 22%;
-      top: 34%;
-    }
+  -webkit-transform: rotate(28.5deg);
+  -moz-transform: rotate(28.5deg);
+  transform: rotate(28.5deg);
+
+
+  -webkit-transition: all 2.7s ease-in-out;
+  -moz-transition: all 2.7s ease-in-out;
+  transition: all 2.7s ease-in-out;
+
+  -webkit-filter: blur(75px);
+  -moz-filter: blur(75px);
+  filter: blur(75px);
+
+  &.firefox {
+    opacity: 0.2;
   }
+}

@@ -1,15 +1,29 @@
-:host {
-  height: 100vh;
+.wrapper {
   width: 100vw;
+  height: 100vh;
+
   position: relative;
   isolation: isolate;
+
   display: grid;
   grid-template-rows: 1fr 96px;
   overflow: hidden;
   z-index: 0;
+
+  &.safari {
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+  }
 }
 
-main {
+.main {
   margin-top: 96px;
   padding: 24px;
 }
+
+@media only screen and (max-width: 600px) {
+  .main {
+    padding: 8px;
+  }
+}
+

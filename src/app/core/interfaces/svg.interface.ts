@@ -2,7 +2,7 @@ export interface IPath {
   stroke: string;
   strokeWidth: string;
   d: string;
-  opacity?: string; // todo: remove
+  opacity?: string;
 }
 
 interface ILinearGradientStop {
@@ -28,7 +28,7 @@ export interface ISVG {
   g: {
     strokeMiterlimit: string;
     path: IPath[];
-  }
+  };
   defs: {
     linearGradient: ILinearGradient[];
   };

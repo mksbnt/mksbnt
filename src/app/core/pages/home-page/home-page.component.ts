@@ -14,7 +14,9 @@ import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ColorService } from "../../services/color.service";
 import { FooterComponent } from "../../shared/ui/footer/footer.component";
 import { DocumentService } from "../../services/document.service";
-import { BehaviorSubject, Subject, takeWhile } from "rxjs";
+import { BehaviorSubject, takeWhile } from "rxjs";
+import { BrowserService } from "../../services/browser.service";
+import { BROWSER } from "../../enums/browser.enum";
 
 @Component({
   selector: "app-home-page",
@@ -30,6 +32,7 @@ import { BehaviorSubject, Subject, takeWhile } from "rxjs";
         <app-semispheres
           [isActive]="isTabActive"
           [color]="currentColor"
+          [browser]="browser"
         ></app-semispheres>
       </div>
     </div>
@@ -46,6 +49,8 @@ export default class HomePageComponent {
   private changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
   private color: string = this.colorService.getCurrentColor();
   private documentTrigger = new BehaviorSubject(this.isTabActive);
+  private browserService: BrowserService = inject(BrowserService);
+  browser: BROWSER = this.browserService.detectBrowserName();
 
   constructor() {
     this.startColorIterator();

@@ -1,8 +1,7 @@
 export interface IColorsPalette {
-    black: string;
-    blue: string;
-    mulberry: string;
-    white: string;
-    magenta: string;
-  }
-  
+  black: string;
+  blue: string;
+  mulberry: string;
+  white: string;
+  magenta: string;
+}
