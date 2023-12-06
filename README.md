@@ -1,7 +1,6 @@
 <h1 align="center">Hi 👋, I'm Maksym</h1>
 <h3 align="center">Software engineer focused on Angular</h3>
-
-<h3 align="center">Languages and Tools:</h3>
+<br/>
 <p align="center">
     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer">
         <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/>
@@ -40,7 +39,7 @@
         <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="linux" width="40" height="40"/>
     </a> 
 </p>
-
+<br/>
 <p align="center"><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=mksbnt&" alt="mksbnt" /></p>
 
 <!-- https://rahuldkjain.github.io/gh-profile-readme-generator/ -->
