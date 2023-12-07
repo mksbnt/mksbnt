@@ -1,6 +1,6 @@
 .wrapper {
-  width: 100vw;
-  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
 
   position: relative;
   isolation: isolate;
@@ -11,19 +11,28 @@
   z-index: 0;
 
   &.safari {
-    width: -webkit-fill-available;
-    height: -webkit-fill-available;
+    min-width: -webkit-fill-available;
+    min-height: -webkit-fill-available;
   }
-}
 
-.main {
-  margin-top: 96px;
-  padding: 24px;
-}
-
-@media only screen and (max-width: 600px) {
   .main {
-    padding: 8px;
+    margin-top: 96px;
+    padding: 24px;
   }
 }
 
+@media only screen and (orientation: portrait) and (max-width: 600px) {
+  .wrapper {
+    .main {
+      padding: 8px;
+    }
+  }
+}
+
+@media only screen and (orientation: landscape) and (max-width: 768px) {
+  .wrapper {
+    .main {
+      margin-top: 0;
+    }
+  }
+}
