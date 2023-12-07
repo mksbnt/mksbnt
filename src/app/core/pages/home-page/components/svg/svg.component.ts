@@ -10,8 +10,7 @@ import { SecondsPostfixPipe } from "../../../../pipes/seconds-postfix.pipe";
   standalone: true,
   imports: [CommonModule, SecondsPostfixPipe],
   template: `
-    @defer {
-      <svg
+    <svg
         class="svg"
         width="2000"
         height="1766"
@@ -176,8 +175,7 @@ import { SecondsPostfixPipe } from "../../../../pipes/seconds-postfix.pipe";
           </linearGradient>
           }
         </defs>
-      </svg>
-    }
+    </svg>
   `,
   styleUrl: "./svg.component.less",
   changeDetection: ChangeDetectionStrategy.OnPush,
