@@ -54,36 +54,32 @@ export default class LayoutComponent implements AfterViewInit {
     "visibilitychange"
   ).pipe(takeUntilDestroyed(this.destroyRef));
 
-  private ngZone: NgZone = inject(NgZone);
-
   width: number = this.window.innerWidth ? this.window.innerWidth : 0;
   height: number = this.window.innerHeight ? this.window.innerHeight : 0;
 
   ngAfterViewInit(): void {
-    this.ngZone.runOutsideAngular(() => {
-      this.orientationChange$.subscribe(() => {
-        const { width, height } = this;
-        this.width = height;
-        this.height = width;
-      });
+    this.orientationChange$.subscribe(() => {
+      const { width, height } = this;
+      this.width = height;
+      this.height = width;
+    });
 
-      this.resize$.subscribe(({ newWidth, newHeight }) => {
-        if (this.width !== newWidth) {
-          this.width = newWidth;
-        }
+    this.resize$.subscribe(({ newWidth, newHeight }) => {
+      if (this.width !== newWidth) {
+        this.width = newWidth;
+      }
 
-        if (this.height !== newHeight) {
-          this.height = newHeight;
-        }
-      });
+      if (this.height !== newHeight) {
+        this.height = newHeight;
+      }
+    });
 
-      this.visibilityChange$.subscribe((event: Event) => {
-        this.documentService.visibility =
-          (event.target as Document).visibilityState ===
-          DOCUMENT_VISIBILITY.HIDDEN
-            ? false
-            : true;
-      });
+    this.visibilityChange$.subscribe((event: Event) => {
+      this.documentService.visibility =
+        (event.target as Document).visibilityState ===
+        DOCUMENT_VISIBILITY.HIDDEN
+          ? false
+          : true;
     });
   }
 }
