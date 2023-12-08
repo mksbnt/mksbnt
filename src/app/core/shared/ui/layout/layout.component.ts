@@ -13,7 +13,6 @@ import { PixelsPostfixPipe } from "../../../pipes/pixels-postfix.pipe";
   standalone: true,
   imports: [CommonModule, RouterOutlet, FooterComponent, PixelsPostfixPipe],
   template: `
-    @if (width && height) {
     <div
       class="wrapper"
       [style.width]="width | pixelsPostfix"
@@ -24,7 +23,6 @@ import { PixelsPostfixPipe } from "../../../pipes/pixels-postfix.pipe";
       </main>
       <app-footer></app-footer>
     </div>
-    }
   `,
   styleUrl: "./layout.component.less",
 })
@@ -50,8 +48,8 @@ export default class LayoutComponent implements AfterViewInit {
     "visibilitychange"
   ).pipe(takeUntilDestroyed(this.destroyRef));
 
-  width: number = this.window.innerWidth;
-  height: number = this.window.innerHeight;
+  width: number = this.window.innerWidth ? this.window.innerWidth : 0;
+  height: number = this.window.innerHeight ? this.window.innerHeight : 0;
 
   ngAfterViewInit(): void {
     this.orientationChange$.subscribe(() => {
