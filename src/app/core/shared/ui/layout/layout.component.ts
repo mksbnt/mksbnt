@@ -25,7 +25,6 @@ export default class LayoutComponent implements AfterViewInit {
   private destroyRef = inject(DestroyRef);
   private documentService: DocumentService = inject(DocumentService);
   private readonly document: Document = inject(DOCUMENT);
-
   private readonly visibilityChange$ = fromEvent(
     this.document,
     "visibilitychange"

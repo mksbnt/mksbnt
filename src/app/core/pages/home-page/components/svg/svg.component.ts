@@ -23,8 +23,6 @@ export class SvgComponent {
   smallerHemisphereAnimationDuration: number =
     this.largerHemisphereAnimationDuration * 0.75;
 
-
-    
   constructor() {
     [this.largerHemisphere, this.smallerHemisphere] = separateArray(SVG.g.path);
     this.linearGradient = SVG.defs.linearGradient;

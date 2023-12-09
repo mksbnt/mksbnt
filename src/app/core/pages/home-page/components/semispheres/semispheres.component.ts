@@ -11,6 +11,7 @@ import { BROWSER } from "../../../../enums/browser.enum";
   template: `
     <app-ellipse [browser]="browser" [color]="color"></app-ellipse>
     <app-svg [isActive]="isActive" [color]="color"></app-svg>
+    <!-- <app-new-svg></app-new-svg> -->
   `,
   styleUrl: "./semispheres.component.less",
 })
