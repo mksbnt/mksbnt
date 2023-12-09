@@ -1,8 +1,9 @@
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   DestroyRef,
-  NgZone,
   inject,
 } from "@angular/core";
 import { CommonModule, DOCUMENT } from "@angular/common";
@@ -31,8 +32,10 @@ import { PixelsPostfixPipe } from "../../../pipes/pixels-postfix.pipe";
     </div>
   `,
   styleUrl: "./layout.component.less",
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class LayoutComponent implements AfterViewInit {
+  private changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
   private destroyRef = inject(DestroyRef);
   private documentService: DocumentService = inject(DocumentService);
   private readonly document: Document = inject(DOCUMENT);
@@ -62,15 +65,18 @@ export default class LayoutComponent implements AfterViewInit {
       const { width, height } = this;
       this.width = height;
       this.height = width;
+      this.changeDetectorRef.markForCheck();
     });
 
     this.resize$.subscribe(({ newWidth, newHeight }) => {
       if (this.width !== newWidth) {
         this.width = newWidth;
+        this.changeDetectorRef.markForCheck();
       }
 
       if (this.height !== newHeight) {
         this.height = newHeight;
+        this.changeDetectorRef.markForCheck();
       }
     });
 
