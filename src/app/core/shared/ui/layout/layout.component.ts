@@ -19,18 +19,26 @@ import { PixelsPostfixPipe } from "../../../pipes/pixels-postfix.pipe";
   selector: "app-layout",
   standalone: true,
   imports: [CommonModule, RouterOutlet, FooterComponent, PixelsPostfixPipe],
+  // template: `
+  //   <div
+  //     class="wrapper"
+  //     [style.width]="width | pixelsPostfix"
+  //     [style.height]="height | pixelsPostfix"
+  //   >
+  //     <main class="main">
+  //       <router-outlet></router-outlet>
+  //     </main>
+  //     <app-footer></app-footer>
+  //   </div>
+  // `,
   template: `
-    <div
-      class="wrapper"
-      [style.width]="width | pixelsPostfix"
-      [style.height]="height | pixelsPostfix"
-    >
-      <main class="main">
-        <router-outlet></router-outlet>
-      </main>
-      <app-footer></app-footer>
-    </div>
-  `,
+  <div class="wrapper">
+    <main class="main">
+      <router-outlet></router-outlet>
+    </main>
+    <app-footer></app-footer>
+  </div>
+`,
   styleUrl: "./layout.component.less",
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -61,31 +69,31 @@ export default class LayoutComponent implements AfterViewInit {
   height: number = this.window.innerHeight ? this.window.innerHeight : 0;
 
   ngAfterViewInit(): void {
-    this.orientationChange$.subscribe(() => {
-      const { width, height } = this;
-      this.width = height;
-      this.height = width;
-      this.changeDetectorRef.markForCheck();
-    });
+    // this.orientationChange$.subscribe(() => {
+    //   const { width, height } = this;
+    //   this.width = height;
+    //   this.height = width;
+    //   this.changeDetectorRef.markForCheck();
+    // });
 
-    this.resize$.subscribe(({ newWidth, newHeight }) => {
-      if (this.width !== newWidth) {
-        this.width = newWidth;
-        this.changeDetectorRef.markForCheck();
-      }
+    // this.resize$.subscribe(({ newWidth, newHeight }) => {
+    //   if (this.width !== newWidth) {
+    //     this.width = newWidth;
+    //     this.changeDetectorRef.markForCheck();
+    //   }
 
-      if (this.height !== newHeight) {
-        this.height = newHeight;
-        this.changeDetectorRef.markForCheck();
-      }
-    });
+    //   if (this.height !== newHeight) {
+    //     this.height = newHeight;
+    //     this.changeDetectorRef.markForCheck();
+    //   }
+    // });
 
-    this.visibilityChange$.subscribe((event: Event) => {
-      this.documentService.visibility =
-        (event.target as Document).visibilityState ===
-        DOCUMENT_VISIBILITY.HIDDEN
-          ? false
-          : true;
-    });
+    // this.visibilityChange$.subscribe((event: Event) => {
+    //   this.documentService.visibility =
+    //     (event.target as Document).visibilityState ===
+    //     DOCUMENT_VISIBILITY.HIDDEN
+    //       ? false
+    //       : true;
+    // });
   }
 }
