@@ -1,11 +1,48 @@
 @import  "./assets/styles/core/reset.less";
 @import "./assets/styles/core/variables.less";
 
-body {
-  font-family: "Share Tech Mono", monospace;
-  background-color: @color-black;
-  color: @color-white;
+// body {
+//   font-family: "Share Tech Mono", monospace;
+//   background-color: @color-black;
+//   color: @color-white;
+// }
+
+
+
+
+html {
+  width: 100vw;
+  height: 100vh;
+  width:  -webkit-fill-available;
+  height: -webkit-fill-available;
+
+  body {
+    width: 100vw;
+    height: 100vh;
+    width:  -webkit-fill-available;
+    height: -webkit-fill-available;
+
+    font-family: "Share Tech Mono", monospace;
+    background-color: @color-black;
+    color: @color-white;
+
+
+    .wrapper {
+      min-width: 100vw;
+      min-height: 100vh;
+      min-width:  -webkit-fill-available;
+      min-height: -webkit-fill-available;
+    }
+  }
 }
+
+
+
+
+
+
+
+
 
 @media only screen and (max-width: 600px) {}
 
