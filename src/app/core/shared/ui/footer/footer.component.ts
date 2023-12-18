@@ -48,22 +48,24 @@ export class FooterComponent {
   private destroyRef = inject(DestroyRef);
   private colorService: ColorService = inject(ColorService);
   private changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
-  private color: string = this.colorService.getCurrentColor();
+  private _color: string = this.colorService.color;
 
   constructor() {
     this.colorService.currentColorChanged
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((color) => {
-        this.color = color;
-        this.changeDetectorRef.detectChanges();
-      });
+      .subscribe((color) => (this.color = color));
   }
 
-  get currentColor(): string {
-    return this.color;
+  get color(): string {
+    return this._color;
+  }
+
+  set color(color: string) {
+    this._color = color;
+    this.changeDetectorRef.detectChanges();
   }
 
   get style(): string {
-    return `background-color: ${this.currentColor}; box-shadow: 0px 0px 14px 0px ${this.currentColor};`;
+    return `background-color: ${this.color}; box-shadow: 0px 0px 14px 0px ${this.color};`;
   }
 }

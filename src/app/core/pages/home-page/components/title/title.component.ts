@@ -12,10 +12,12 @@ import {
   template: `
     <h1 class="title">
       <div class="row" [style.color]="primaryColor">
-        <span class="primary-text" >Software Engineer</span>
+        <span class="primary-text">Software Engineer</span>
       </div>
       <div class="row">
-        <span class="focus secondary-text" [style.color]="secondaryColor">Focused</span>
+        <span class="focus secondary-text" [style.color]="secondaryColor"
+          >Focused</span
+        >
         <span class="space">&nbsp;</span>
         <div class="primary-text typing" [style.color]="primaryColor"></div>
       </div>

@@ -15,23 +15,22 @@ export class ColorService {
     colorsPalette.magenta,
   ];
   private colorIndex: number = 0;
-  private color: string = transparentColor;
+  private _color: string = transparentColor;
   currentColorChanged: EventEmitter<string> = new EventEmitter<string>();
 
-  getCurrentColor(): string {
-    return this.color;
+  get color(): string {
+    return this._color;
   }
 
-  setCurrentColor(color: string): void {
-    this.color = color;
+  set color(color: string) {
+    this._color = color;
     this.currentColorChanged.emit(this.color);
   }
 
   colorIterator(): Observable<string> {
     return timer(0, 3000).pipe(
       map(() => {
-        this.colorIndex =
-          (this.colorIndex + 1) % this.colors.length;
+        this.colorIndex = (this.colorIndex + 1) % this.colors.length;
         return this.colors[this.colorIndex];
       })
     );

@@ -26,12 +26,12 @@ import { BROWSER } from "../../enums/browser.enum";
   template: `
     <div class="page">
       <div class="page_title">
-        <app-title [color]="currentColor"></app-title>
+        <app-title [color]="color"></app-title>
       </div>
       <div class="page_semispheres">
         <app-semispheres
           [isActive]="isTabActive"
-          [color]="currentColor"
+          [color]="color"
           [browser]="browser"
         ></app-semispheres>
       </div>
@@ -47,7 +47,7 @@ export default class HomePageComponent {
   private colorService: ColorService = inject(ColorService);
   private documentService: DocumentService = inject(DocumentService);
   private changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
-  private color: string = this.colorService.getCurrentColor();
+  private _color: string = this.colorService.color;
   private documentTrigger = new BehaviorSubject(this.isTabActive);
   private browserService: BrowserService = inject(BrowserService);
   browser: BROWSER = this.browserService.detectBrowserName();
@@ -63,8 +63,14 @@ export default class HomePageComponent {
       });
   }
 
-  get currentColor(): string {
-    return this.color;
+  get color(): string {
+    return this._color;
+  }
+
+  set color(value: string) {
+    this.colorService.color = value;
+    this._color = this.colorService.color;
+    this.changeDetectorRef.detectChanges();
   }
 
   private startColorIterator(): void {
@@ -75,14 +81,8 @@ export default class HomePageComponent {
           takeUntilDestroyed(this.destroyRef),
           takeWhile(() => this.documentTrigger.getValue())
         )
-        .subscribe((color) => this.updateColor(color));
+        .subscribe((color) => (this.color = color));
     });
-  }
-
-  private updateColor(color: string): void {
-    this.colorService.setCurrentColor(color);
-    this.color = this.colorService.getCurrentColor();
-    this.changeDetectorRef.detectChanges();
   }
 
   private stopColorUpdate(): void {
