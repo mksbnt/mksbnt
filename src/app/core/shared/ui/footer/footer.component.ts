@@ -10,10 +10,9 @@ import { ColorService } from "../../../services/color.service";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 
 @Component({
-  selector: "app-footer",
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: "app-footer",
+    imports: [CommonModule],
+    template: `
     <footer>
       <a
         href="https://github.com/mksbnt/mksbnt"
@@ -41,8 +40,8 @@ import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
       </a>
     </footer>
   `,
-  styleUrl: "./footer.component.less",
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    styleUrl: "./footer.component.less",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FooterComponent {
   private destroyRef = inject(DestroyRef);

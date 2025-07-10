@@ -6,10 +6,9 @@ import {
 } from "../../../../constants/colors-palette.constant";
 
 @Component({
-  selector: "app-title",
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: "app-title",
+    imports: [CommonModule],
+    template: `
     <h1 class="title">
       <div class="row" [style.color]="primaryColor">
         <span class="primary-text">Software Engineer</span>
@@ -23,7 +22,7 @@ import {
       </div>
     </h1>
   `,
-  styleUrl: "./title.component.less",
+    styleUrl: "./title.component.less"
 })
 export class TitleComponent {
   @Input({ required: true }) color!: string;

@@ -5,15 +5,14 @@ import { EllipseComponent } from "../ellipse/ellipse.component";
 import { BROWSER } from "../../../../enums/browser.enum";
 
 @Component({
-  selector: "app-semispheres",
-  standalone: true,
-  imports: [CommonModule, SvgComponent, EllipseComponent],
-  template: `
+    selector: "app-semispheres",
+    imports: [CommonModule, SvgComponent, EllipseComponent],
+    template: `
     <app-ellipse [browser]="browser" [color]="color"></app-ellipse>
     <app-svg [isActive]="isActive" [color]="color"></app-svg>
     <!-- <app-new-svg></app-new-svg> -->
   `,
-  styleUrl: "./semispheres.component.less",
+    styleUrl: "./semispheres.component.less"
 })
 export class SemispheresComponent {
   @Input({ required: true }) color!: string;

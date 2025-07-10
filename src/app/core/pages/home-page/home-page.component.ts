@@ -18,11 +18,10 @@ import { BrowserService } from "../../services/browser.service";
 import { BROWSER } from "../../enums/browser.enum";
 
 @Component({
-  selector: "app-home-page",
-  standalone: true,
-  imports: [CommonModule, TitleComponent, SemispheresComponent],
-  providers: [FooterComponent],
-  template: `
+    selector: "app-home-page",
+    imports: [CommonModule, TitleComponent, SemispheresComponent],
+    providers: [FooterComponent],
+    template: `
     <div class="page">
       <div class="page_title">
         <app-title [color]="color"></app-title>
@@ -36,8 +35,8 @@ import { BROWSER } from "../../enums/browser.enum";
       </div>
     </div>
   `,
-  styleUrl: "./home-page.component.less",
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    styleUrl: "./home-page.component.less",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export default class HomePageComponent {
   isTabActive: boolean = true;

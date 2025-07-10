@@ -6,12 +6,11 @@ import { SVG } from "../../../../constants/svg.constant";
 import { SecondsPostfixPipe } from "../../../../pipes/seconds-postfix.pipe";
 
 @Component({
-  selector: "app-svg",
-  standalone: true,
-  imports: [CommonModule, SecondsPostfixPipe],
-  templateUrl: "./svg.component.svg",
-  styleUrl: "./svg.component.less",
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: "app-svg",
+    imports: [CommonModule, SecondsPostfixPipe],
+    templateUrl: "./svg.component.svg",
+    styleUrl: "./svg.component.less",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SvgComponent {
   @Input({ required: true }) color!: string;

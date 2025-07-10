@@ -8,10 +8,9 @@ import { fromEvent } from "rxjs";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 
 @Component({
-  selector: "app-layout",
-  standalone: true,
-  imports: [CommonModule, RouterOutlet, FooterComponent],
-  template: `
+    selector: "app-layout",
+    imports: [CommonModule, RouterOutlet, FooterComponent],
+    template: `
     <div class="wrapper">
       <main class="main">
         <router-outlet></router-outlet>
@@ -19,7 +18,7 @@ import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
       <app-footer></app-footer>
     </div>
   `,
-  styleUrl: "./layout.component.less",
+    styleUrl: "./layout.component.less"
 })
 export default class LayoutComponent implements AfterViewInit {
   private destroyRef = inject(DestroyRef);
