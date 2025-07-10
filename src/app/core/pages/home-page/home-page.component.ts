@@ -7,7 +7,6 @@ import {
   inject,
 } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { SvgComponent } from "./components/svg/svg.component";
 import { TitleComponent } from "./components/title/title.component";
 import { SemispheresComponent } from "./components/semispheres/semispheres.component";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
@@ -21,7 +20,7 @@ import { BROWSER } from "../../enums/browser.enum";
 @Component({
   selector: "app-home-page",
   standalone: true,
-  imports: [CommonModule, SvgComponent, TitleComponent, SemispheresComponent],
+  imports: [CommonModule, TitleComponent, SemispheresComponent],
   providers: [FooterComponent],
   template: `
     <div class="page">
