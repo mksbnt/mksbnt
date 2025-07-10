@@ -1,5 +1,5 @@
-import { Injectable, PLATFORM_ID, inject } from "@angular/core";
-import { DOCUMENT, isPlatformBrowser } from "@angular/common";
+import { Injectable, PLATFORM_ID, inject, DOCUMENT } from "@angular/core";
+import { isPlatformBrowser } from "@angular/common";
 import { BROWSER, USER_AGENT_ID } from "../enums/browser.enum";
 import { BrowserDetectionCache } from "../types/browser-detection-cache.type";
 

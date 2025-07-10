@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, DestroyRef, inject } from "@angular/core";
-import { CommonModule, DOCUMENT } from "@angular/common";
+import { AfterViewInit, Component, DestroyRef, inject, DOCUMENT } from "@angular/core";
+import { CommonModule } from "@angular/common";
 import { RouterOutlet } from "@angular/router";
 import { FooterComponent } from "../footer/footer.component";
 import { DocumentService } from "../../../services/document.service";
