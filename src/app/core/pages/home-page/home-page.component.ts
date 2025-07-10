@@ -6,7 +6,7 @@ import {
   NgZone,
   inject,
 } from "@angular/core";
-import { CommonModule } from "@angular/common";
+
 import { TitleComponent } from "./components/title/title.component";
 import { SemispheresComponent } from "./components/semispheres/semispheres.component";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
@@ -19,7 +19,7 @@ import { BROWSER } from "../../enums/browser.enum";
 
 @Component({
     selector: "app-home-page",
-    imports: [CommonModule, TitleComponent, SemispheresComponent],
+    imports: [TitleComponent, SemispheresComponent],
     providers: [FooterComponent],
     template: `
     <div class="page">

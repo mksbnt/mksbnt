@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, DestroyRef, inject, DOCUMENT } from "@angular/core";
-import { CommonModule } from "@angular/common";
+
 import { RouterOutlet } from "@angular/router";
 import { FooterComponent } from "../footer/footer.component";
 import { DocumentService } from "../../../services/document.service";
@@ -9,7 +9,7 @@ import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 
 @Component({
     selector: "app-layout",
-    imports: [CommonModule, RouterOutlet, FooterComponent],
+    imports: [RouterOutlet, FooterComponent],
     template: `
     <div class="wrapper">
       <main class="main">

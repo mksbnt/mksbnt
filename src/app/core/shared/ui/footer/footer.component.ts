@@ -5,13 +5,13 @@ import {
   DestroyRef,
   inject,
 } from "@angular/core";
-import { CommonModule } from "@angular/common";
+
 import { ColorService } from "../../../services/color.service";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 
 @Component({
     selector: "app-footer",
-    imports: [CommonModule],
+    imports: [],
     template: `
     <footer>
       <a

@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { CommonModule } from "@angular/common";
+
 import {
   colorsPalette,
   transparentColor,
@@ -7,7 +7,7 @@ import {
 
 @Component({
     selector: "app-title",
-    imports: [CommonModule],
+    imports: [],
     template: `
     <h1 class="title">
       <div class="row" [style.color]="primaryColor">

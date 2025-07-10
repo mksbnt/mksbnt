@@ -1,10 +1,10 @@
 import { Component, Input } from "@angular/core";
-import { CommonModule } from "@angular/common";
+
 import { BROWSER } from "../../../../enums/browser.enum";
 
 @Component({
     selector: "app-ellipse",
-    imports: [CommonModule],
+    imports: [],
     template: `
     <div
       class="ellipse"

@@ -1,12 +1,12 @@
 import { Component, Input } from "@angular/core";
-import { CommonModule } from "@angular/common";
+
 import { SvgComponent } from "../svg/svg.component";
 import { EllipseComponent } from "../ellipse/ellipse.component";
 import { BROWSER } from "../../../../enums/browser.enum";
 
 @Component({
     selector: "app-semispheres",
-    imports: [CommonModule, SvgComponent, EllipseComponent],
+    imports: [SvgComponent, EllipseComponent],
     template: `
     <app-ellipse [browser]="browser" [color]="color"></app-ellipse>
     <app-svg [isActive]="isActive" [color]="color"></app-svg>
