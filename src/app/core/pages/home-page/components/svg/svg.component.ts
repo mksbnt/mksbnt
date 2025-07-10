@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, input } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ILinearGradient, IPath } from "../../../../interfaces/svg.interface";
 import { separateArray } from "../../../../utils/separate-array.util";
@@ -13,8 +13,8 @@ import { SecondsPostfixPipe } from "../../../../pipes/seconds-postfix.pipe";
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SvgComponent {
-  @Input({ required: true }) color!: string;
-  @Input({ required: true }) isActive!: boolean;
+  readonly color = input.required<string>();
+  readonly isActive = input.required<boolean>();
   largerHemisphere!: IPath[];
   smallerHemisphere!: IPath[];
   linearGradient!: ILinearGradient[];

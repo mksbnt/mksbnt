@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, input } from "@angular/core";
 
 import {
   colorsPalette,
@@ -25,15 +25,15 @@ import {
     styleUrl: "./title.component.less"
 })
 export class TitleComponent {
-  @Input({ required: true }) color!: string;
+  readonly color = input.required<string>();
 
   get primaryColor(): string {
-    return this.color === transparentColor
+    return this.color() === transparentColor
       ? transparentColor
       : colorsPalette.white;
   }
 
   get secondaryColor(): string {
-    return this.color;
+    return this.color();
   }
 }

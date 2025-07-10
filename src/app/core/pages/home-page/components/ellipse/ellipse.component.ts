@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, input } from "@angular/core";
 
 import { BROWSER } from "../../../../enums/browser.enum";
 
@@ -8,13 +8,13 @@ import { BROWSER } from "../../../../enums/browser.enum";
     template: `
     <div
       class="ellipse"
-      [class]="browser"
-      [style.background-color]="color"
+      [class]="browser()"
+      [style.background-color]="color()"
     ></div>
   `,
     styleUrl: "./ellipse.component.less"
 })
 export class EllipseComponent {
-  @Input({ required: true }) color!: string;
-  @Input({ required: true }) browser!: BROWSER;
+  readonly color = input.required<string>();
+  readonly browser = input.required<BROWSER>();
 }

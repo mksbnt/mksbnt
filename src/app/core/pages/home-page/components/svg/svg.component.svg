@@ -13,7 +13,7 @@
                     [attr.d]="p.d"
                     [attr.opacity]="p.opacity"
                 >
-                    @if (isActive) {
+                    @if (isActive()) {
                         <animate
                             attributeName="d"
                             [attr.dur]="largerHemisphereAnimationDuration | secondsPostfix"
@@ -35,7 +35,7 @@
                     [attr.d]="p.d"
                     [attr.opacity]="p.opacity"
                 >
-                    @if (isActive) {
+                    @if (isActive()) {
                         <animate
                             attributeName="d"
                             [attr.dur]="largerHemisphereAnimationDuration | secondsPostfix"
@@ -52,7 +52,7 @@
                     [attr.d]="p.d"
                     [attr.opacity]="p.opacity"
                 >
-                    @if (isActive) {
+                    @if (isActive()) {
                         <animate
                             attributeName="d"
                             [attr.dur]="largerHemisphereAnimationDuration | secondsPostfix"
@@ -78,7 +78,7 @@
                     [attr.d]="psh.d"
                     [attr.opacity]="psh.opacity"
                 >
-                    @if (isActive) {
+                    @if (isActive()) {
                         <animate
                             attributeName="d"
                             [attr.dur]="smallerHemisphereAnimationDuration | secondsPostfix"
@@ -101,7 +101,7 @@
                     [attr.d]="psh.d"
                     [attr.opacity]="psh.opacity"
                 >
-                @if (isActive) {
+                @if (isActive()) {
                     <animate
                         attributeName="d"
                         [attr.dur]="smallerHemisphereAnimationDuration | secondsPostfix"
@@ -117,7 +117,7 @@
                     [attr.d]="psh.d"
                     [attr.opacity]="psh.opacity"
                 >
-                    @if (isActive) {
+                    @if (isActive()) {
                         <animate
                             attributeName="d"
                             [attr.dur]="smallerHemisphereAnimationDuration | secondsPostfix"
@@ -153,7 +153,7 @@
                     <stop
                         class="stop-color-transition"
                         [attr.offset]="s.offset"
-                        [attr.stop-color]="color"
+                        [attr.stop-color]="color()"
                     />
                 } 
             }

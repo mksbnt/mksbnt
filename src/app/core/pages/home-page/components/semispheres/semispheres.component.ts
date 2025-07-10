@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, input } from "@angular/core";
 
 import { SvgComponent } from "../svg/svg.component";
 import { EllipseComponent } from "../ellipse/ellipse.component";
@@ -8,13 +8,13 @@ import { BROWSER } from "../../../../enums/browser.enum";
     selector: "app-semispheres",
     imports: [SvgComponent, EllipseComponent],
     template: `
-    <app-ellipse [browser]="browser" [color]="color"></app-ellipse>
-    <app-svg [isActive]="isActive" [color]="color"></app-svg>
+    <app-ellipse [browser]="browser()" [color]="color()"></app-ellipse>
+    <app-svg [isActive]="isActive()" [color]="color()"></app-svg>
   `,
     styleUrl: "./semispheres.component.less"
 })
 export class SemispheresComponent {
-  @Input({ required: true }) color!: string;
-  @Input({ required: true }) isActive!: boolean;
-  @Input({ required: true }) browser!: BROWSER;
+  readonly color = input.required<string>();
+  readonly isActive = input.required<boolean>();
+  readonly browser = input.required<BROWSER>();
 }
