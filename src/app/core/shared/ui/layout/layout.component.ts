@@ -13,9 +13,9 @@ import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
     template: `
     <div class="wrapper">
       <main class="main">
-        <router-outlet></router-outlet>
+        <router-outlet />
       </main>
-      <app-footer></app-footer>
+      <app-footer />
     </div>
   `,
     styleUrl: "./layout.component.less"

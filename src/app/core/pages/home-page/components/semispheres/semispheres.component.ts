@@ -8,8 +8,8 @@ import { BROWSER } from "../../../../enums/browser.enum";
     selector: "app-semispheres",
     imports: [SvgComponent, EllipseComponent],
     template: `
-    <app-ellipse [browser]="browser()" [color]="color()"></app-ellipse>
-    <app-svg [isActive]="isActive()" [color]="color()"></app-svg>
+    <app-ellipse [browser]="browser()" [color]="color()" />
+    <app-svg [isActive]="isActive()" [color]="color()" />
   `,
     styleUrl: "./semispheres.component.less"
 })

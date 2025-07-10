@@ -5,7 +5,7 @@
     xmlns="http://www.w3.org/2000/svg"
 >
     <g stroke-miterlimit="10">
-        @for (p of largerHemisphere; track p; let i = $index, c = $count, e = $even) { 
+        @for (p of largerHemisphere; track p; let i = $index, c = $count) {
             @if (i === 0) {
                 <path
                     [attr.stroke]="p.stroke"
@@ -146,7 +146,7 @@
                 [attr.gradientUnits]="l.gradientUnits"
                 gradientTransform="rotate(24)"
             >
-            @for (s of l.stop; track s; let first = $first) { 
+            @for (s of l.stop; track s;) {
                 @if (s.stopOpacity) {
                     <stop [attr.offset]="s.offset" [attr.stop-opacity]="s.stopOpacity" />
                 } @if (s.stopColor) {

@@ -24,14 +24,13 @@ import { BROWSER } from "../../enums/browser.enum";
     template: `
     <div class="page">
       <div class="page_title">
-        <app-title [color]="color"></app-title>
+        <app-title [color]="color" />
       </div>
       <div class="page_semispheres">
-        <app-semispheres
-          [isActive]="isTabActive"
+        <app-semispheres [isActive]="isTabActive"
           [color]="color"
           [browser]="browser"
-        ></app-semispheres>
+         />
       </div>
     </div>
   `,
