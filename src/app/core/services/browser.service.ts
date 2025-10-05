@@ -13,33 +13,30 @@ export class BrowserService {
   private readonly userAgentString: string = this.document.defaultView!.navigator.userAgent!.toLowerCase();
   private browserDetectionCache: BrowserDetectionCache = {};
 
+  private readonly browserPatterns: ReadonlyArray<readonly [string, BROWSER]> = [
+    [BROWSER.EDGE, BROWSER.EDGE],
+    [USER_AGENT_ID.OPERA, BROWSER.OPERA],
+    [BROWSER.CHROME, BROWSER.CHROME],
+    [USER_AGENT_ID.IE, BROWSER.IE],
+    [BROWSER.FIREFOX, BROWSER.FIREFOX],
+    [BROWSER.SAFARI, BROWSER.SAFARI],
+  ] as const;
+
   detectBrowserName(agentString: string = this.userAgentString): BROWSER {
     if (this.browserDetectionCache.hasOwnProperty(agentString)) {
       return this.browserDetectionCache[agentString];
     }
 
-    switch (this.isBrowser) {
-      case agentString.indexOf(BROWSER.EDGE) > -1:
-        this.browserDetectionCache[agentString] = BROWSER.EDGE;
-        return BROWSER.EDGE;
-      case agentString.indexOf(USER_AGENT_ID.OPERA) > -1:
-        this.browserDetectionCache[agentString] = BROWSER.OPERA;
-        return BROWSER.OPERA;
-      case agentString.indexOf(BROWSER.CHROME) > -1:
-        this.browserDetectionCache[agentString] = BROWSER.CHROME;
-        return BROWSER.CHROME;
-      case agentString.indexOf(USER_AGENT_ID.IE) > -1:
-        this.browserDetectionCache[agentString] = BROWSER.IE;
-        return BROWSER.IE;
-      case agentString.indexOf(BROWSER.FIREFOX) > -1:
-        this.browserDetectionCache[agentString] = BROWSER.FIREFOX;
-        return BROWSER.FIREFOX;
-      case agentString.indexOf(BROWSER.SAFARI) > -1:
-        this.browserDetectionCache[agentString] = BROWSER.SAFARI;
-        return BROWSER.SAFARI;
-      default:
-        this.browserDetectionCache[agentString] = BROWSER.OTHER;
-        return BROWSER.OTHER;
+    if (!this.isBrowser) {
+      this.browserDetectionCache[agentString] = BROWSER.OTHER;
+      return BROWSER.OTHER;
     }
+
+    const detectedBrowser = this.browserPatterns.find(([pattern]) =>
+      agentString.includes(pattern)
+    )?.[1] ?? BROWSER.OTHER;
+
+    this.browserDetectionCache[agentString] = detectedBrowser;
+    return detectedBrowser;
   }
 }
